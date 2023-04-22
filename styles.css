@@ -3,7 +3,7 @@ body {
     background: white;
     text-align: center;
 }
-button {
+.notebook-button {
     background-color: red;
     color: white; 
 }
