@@ -2,6 +2,8 @@ body {
     margin :0;
     background: white;
     text-align: center;
+    background-image: url("C:\Users\adria\OneDrive\Skrivebord\DTU - KID\physicists_network\fysikerfest.jpg");
+    background-size: cover;
 }
 .notebook-button {
     background-color: sandybrown;
@@ -61,7 +63,7 @@ nav a:hover, nav a.active {
 }
 
 .hero::before {
-    content: "";
+    content: "hh";
     position: absolute;
     top: 0;
     left: 0;
