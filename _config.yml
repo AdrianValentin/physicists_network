@@ -1,0 +1,12 @@
+# Site settings
+title: My Awesome Website
+description: This is my awesome website.
+baseurl: /
+url: https://www.example.com
+
+# Build settings
+markdown: kramdown
+theme: my-awesome-theme
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
