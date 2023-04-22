@@ -1,5 +1,35 @@
+/* Set the background color of the page */
 body {
+    background-color: #f7f7f7;
     margin: 0;
-    background: pink;
+}
+
+/* Set the styles for the header */
+header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the page title */
+h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: bold;
     text-align: center;
+    color: #333;
+}
+
+/* Set the styles for the main content */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Set the styles for the paragraphs */
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #555;
 }
