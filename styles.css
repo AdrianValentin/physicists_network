@@ -12,12 +12,13 @@ p {
 
 .p-subcenter {
     position: absolute;
-    top: 60%;
-    left: 37%;
+    top: 62%;
+    left: 50%;
     transform: translate(-50%, -50%);
     color: #6d6c6c;
     font-size: 20px;
-    margin-bottom: 20px;
+
+    
 }
 .notebook-button {
     background-color: sandybrown;
@@ -117,42 +118,43 @@ h1 {
 
 
 
-  footer {
+footer {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     background-color: #333;
     color: #fff;
     padding: 20px;
-  }
+}
   
-  .column {
+.column {
     flex: 1;
-    margin: 0 10px;
-  }
+    margin: 10px;
+    font-size: 0.8em;
+}
   
-  h3 {
+h3 {
     color: #fff;
     font-size: 1.2em;
     margin-bottom: 10px;
-  }
+}
   
-  ul {
+ul {
     list-style: none;
     margin: 0;
     padding: 0;
-  }
+}
   
-  li {
+li {
     margin-bottom: 5px;
-  }
+}
   
-  a {
+a {
     color: #fff;
     text-decoration: none;
-  }
+}
   
-  a:hover {
+a:hover {
     text-decoration: underline;
-  }
+}
   
