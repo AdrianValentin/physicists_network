@@ -9,13 +9,23 @@ p {
     font-family: Roboto;
     margin: 10px 250px;
 }
+
+.p-subcenter {
+    position: absolute;
+    top: 60%;
+    left: 37%;
+    transform: translate(-50%, -50%);
+    color: #6d6c6c;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
 .notebook-button {
     background-color: sandybrown;
     color: white; 
     height: 36px;
     width: 105px;
     border: none; 
-    border-radius: 2px; 
+    border-radius: 10px; 
     cursor: pointer; 
     border-color: sandybrown;
     border-style: solid;
@@ -28,15 +38,17 @@ p {
     height: 50px;
     width: 180px;
     border: none; 
-    border-radius: 2px; 
+    border-radius: 10px; 
     cursor: pointer; 
     border-color: sandybrown;
     border-style: solid;
     border-width: 1px; 
     position: absolute;
-    top: 70%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 18px;
+    padding: 10px 20px;
 
 }
 
