@@ -16,17 +16,13 @@ body {
     border-style: solid;
     border-width: 1px; 
 }
-.container {
-    position: relative;
-    text-align: center;
-    color: white;
-  }
 
-  img { 
+
+img { 
     width: 100%;
     height: auto;
-    opacity: 0.3;
-  }
+    opacity: 0.5;
+}
 
 /* Style the header and navigation bar */
 header {
@@ -61,13 +57,17 @@ nav a {
 nav a:hover, nav a.active {
 	background-color: #555;
 }
-.centered {
+.center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 25px;
   }
+
+.container {
+  position: relative;
+}
 
 h1 {
     font-size: 5em;
