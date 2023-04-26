@@ -4,6 +4,11 @@ body {
     text-align: center;
 
 }
+
+p {
+    font-family: Roboto;
+    margin: 10px 250px;
+}
 .notebook-button {
     background-color: sandybrown;
     color: white; 
@@ -15,13 +20,37 @@ body {
     border-color: sandybrown;
     border-style: solid;
     border-width: 1px; 
-}
 
+}
+.notebook-button-image {
+    background-color: sandybrown;
+    color: white; 
+    height: 50px;
+    width: 180px;
+    border: none; 
+    border-radius: 2px; 
+    cursor: pointer; 
+    border-color: sandybrown;
+    border-style: solid;
+    border-width: 1px; 
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
 
 img { 
     width: 100%;
-    height: auto;
-    opacity: 0.5;
+    height: 600;
+    opacity: 0.3;
+}
+
+div { 
+    font-size: 2em; 
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #333
 }
 
 /* Style the header and navigation bar */
@@ -62,7 +91,7 @@ nav a:hover, nav a.active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 25px;
+    font-size: 40 px;
   }
 
 .container {
@@ -70,6 +99,6 @@ nav a:hover, nav a.active {
 }
 
 h1 {
-    font-size: 5em;
-    margin: 0;
+    font-size: 3em;
+    margin: 80px 0px;
 }
