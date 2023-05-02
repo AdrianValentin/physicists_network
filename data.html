@@ -27,5 +27,17 @@
         <div class="center">DATA</div>
     </div>
 
+    <h1>Data collection</h1>
+    <p>In our study, we aimed to create a comprehensive graph network of physicists based on the available information on Wikipedia.  </p>
+    <h2>Initial Sample Selection </h2>
+    <p> Our starting point was the Wikipedia page titled <a href="https://en.wikipedia.org/wiki/List_of_physicists"style="color: blue;"> "List of Physicists"</a>. This page provided an extensive, albeit non-exhaustive, compilation of notable physicists throughout history. We used the Wikipedia API to extract the 1,000 physicists listed on the page. This initial selection formed the basis of our graph network, with each physicist serving as a node.</p>
+    <h2>Web Scraping for Influences</h2>
+    <p>To enrich our dataset, we proceeded to web scrape information from the individual Wikipedia pages of the selected physicists. We used the Wikipedia API to access these pages and extracted all the links associated with each physicist. In doing so, we were able to gather valuable information about how they influenced or got influenced by other people. </p>
+    <h2>Constructing the Graph Network</h2>
+    <p>With the data acquired through web scraping, we connected the nodes representing physicists in our graph network, using the library Networkx. Each link found on a physicist's Wikipedia page was treated as an edge connecting them to other physicists or relevant entities. This approach allowed us to generate a comprehensive, interconnected network that effectively captured the complex relationships and collaborations within the field of physics.
+        In summary, our data collection process involved leveraging the Wikipedia API to select an initial sample of physicists and gather additional information about their connections. By combining this data, we were able to create a detailed graph network that provides valuable insights into the global physics community.
+        </p>
+
+
 </body>
 </html>
