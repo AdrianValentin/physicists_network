@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.1/sigma.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js.plugins/0.1.0/sigma.plugins.hover.min.js%22%3E"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js.plugins/0.1.0/sigma.canvas.edges.labels.curve.min.js%22%3E"></script>
+
 </head>
 <body>
     <header>
@@ -47,6 +51,7 @@
         
         
         <h1>GRAPH OF NETWORK</h1>
+        <div id="container" style="width:800px; height:600px; margin:0 auto;"></div>
 
         <img src="graph.png" alt="Graph of network" class="image-style">
 
@@ -79,6 +84,52 @@
         </div>
        
       </footer>
+   
+    
+      <script>
+        // Load the graph data from the JSON file
+        fetch('graph_data (1).json')
+            .then(response => response.json())
+            .then(graphData => {
+                // Create a new Sigma.js instance
+                const sigmaInstance = new sigma({
+                    graph: graphData,
+                    container: 'container',
+                    settings: {
+                        defaultNodeColor: '#ec5148',
+                        defaultEdgeColor: '#ccc',
+                        edgeColor: 'default',
+                        minArrowSize: 7,
+                        labelThreshold: 20,
+                    }
+                });
+    
+                // Customize edge size based on the weight range [1, 10]
+                const minEdgeWeight = 1;
+                const maxEdgeWeight = 10;
+                const minEdgeSize = 1;
+                const maxEdgeSize = 10;
+    
+                // Scale the edge size based on the weight
+                sigmaInstance.graph.edges().forEach(edge => {
+                    const edgeWeight = edge.size;
+                    edge.size = minEdgeSize + (edgeWeight - minEdgeWeight) * (maxEdgeSize - minEdgeSize) / (maxEdgeWeight - minEdgeWeight);
+                });
+    
+                // Initialize the hover plugin
+                const hoverListener = sigma.plugins.hover(sigmaInstance, {
+                    nodeHoverColor: 'node',
+                    labelHoverShadow: 'default',
+                    labelHoverShadowColor: 'rgba(0, 0, 0, 0.9)',
+                    edgeHoverExtremities: false, // Disable edge labels when hovering over the edge
+                });
+    
+                // Refresh the graph to apply the updated node positions
+                sigmaInstance.refresh();
+            });
+    </script>
+      
+      
       
       
 </body>
