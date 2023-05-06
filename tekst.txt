@@ -1,3 +1,80 @@
-<div class="hero">
-        <h1>Physicist Network Project123213</h1>
-    </div>
+<script>
+        // Load the graph data from the JSON file
+        fetch('graph_data (1).json')
+          .then(response => response.json())
+          .then(graphData => {
+            // Create a new Sigma.js instance
+            const sigmaInstance = new sigma({
+              graph: graphData,
+              container: 'container',
+              settings: {
+            
+                edgeColor: 'default',
+                drawLabels: false,
+
+                labelSize: 'proportional',
+                labelSizeRatio: 1,
+                defaultLabelColor: '#000',
+              }
+            });
+             // Show node label on hover
+            sigmaInstance.bind('overNode', function (event) {
+              const node = event.data.node;
+              node.label = node.original_label;
+              sigmaInstance.renderers[0].drawLabel(event.data.node, sigmaInstance.renderers[0].contexts.labels);
+            });
+
+            // Hide node label when cursor moves away
+            sigmaInstance.bind('outNode', function (event) {
+              event.data.node.label = '';
+              sigmaInstance.refresh();
+            });
+      
+            // Refresh the graph to apply the updated node positions
+            sigmaInstance.refresh();
+          });
+      </script>
+
+      #dette script fungere godt 
+      <script>
+        // Load the graph data from the JSON file
+        fetch('graph_data (1).json')
+            .then(response => response.json())
+            .then(graphData => {
+                // Create a new Sigma.js instance
+                const sigmaInstance = new sigma({
+                    graph: graphData,
+                    container: 'container',
+                    settings: {
+                        defaultNodeColor: '#ec5148',
+                        defaultEdgeColor: '#ccc',
+                        edgeColor: 'default',
+                        minArrowSize: 7,
+                        labelThreshold: 20,
+                    }
+                });
+    
+                // Customize edge size based on the weight range [1, 10]
+                const minEdgeWeight = 1;
+                const maxEdgeWeight = 10;
+                const minEdgeSize = 1;
+                const maxEdgeSize = 10;
+    
+                // Scale the edge size based on the weight
+                sigmaInstance.graph.edges().forEach(edge => {
+                    const edgeWeight = edge.size;
+                    edge.size = minEdgeSize + (edgeWeight - minEdgeWeight) * (maxEdgeSize - minEdgeSize) / (maxEdgeWeight - minEdgeWeight);
+                });
+    
+                // Initialize the hover plugin
+                const hoverListener = sigma.plugins.hover(sigmaInstance, {
+                    nodeHoverColor: 'node',
+                    labelHoverShadow: 'default',
+                    labelHoverShadowColor: 'rgba(0, 0, 0, 0.9)',
+                    edgeHoverExtremities: false, // Disable edge labels when hovering over the edge
+                });
+    
+                // Refresh the graph to apply the updated node positions
+                sigmaInstance.refresh();
+            });
+    </script>

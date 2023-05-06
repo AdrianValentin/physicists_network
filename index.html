@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.1/sigma.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js.plugins/0.1.0/sigma.plugins.hover.min.js%22%3E"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js.plugins/0.1.0/sigma.canvas.edges.labels.curve.min.js%22%3E"></script>
+    <script src="https://unpkg.com/cytoscape@3.19.0/dist/cytoscape.min.js"></script>
 
 </head>
 <body>
@@ -51,13 +52,21 @@
         
         
         <h1>GRAPH OF NETWORK</h1>
-        <div id="container" style="width:800px; height:600px; margin:0 auto;"></div>
+        
+        <div style="position: relative; height: 600px;">
+            <div id="cy" ></div>
+            
+          </div>
 
         <img src="graph.png" alt="Graph of network" class="image-style">
 
+
+
+
+
         <h2>Look more into the project</h2>
 
-
+        
         
         <button class="notebook-button">Go to Notebook</button> 
     </main>
@@ -84,50 +93,93 @@
         </div>
        
       </footer>
-   
-    
+
+      
+
       <script>
-        // Load the graph data from the JSON file
-        fetch('graph_data (1).json')
-            .then(response => response.json())
-            .then(graphData => {
-                // Create a new Sigma.js instance
-                const sigmaInstance = new sigma({
-                    graph: graphData,
-                    container: 'container',
-                    settings: {
-                        defaultNodeColor: '#ec5148',
-                        defaultEdgeColor: '#ccc',
-                        edgeColor: 'default',
-                        minArrowSize: 7,
-                        labelThreshold: 20,
-                    }
-                });
-    
-                // Customize edge size based on the weight range [1, 10]
-                const minEdgeWeight = 1;
-                const maxEdgeWeight = 10;
-                const minEdgeSize = 1;
-                const maxEdgeSize = 10;
-    
-                // Scale the edge size based on the weight
-                sigmaInstance.graph.edges().forEach(edge => {
-                    const edgeWeight = edge.size;
-                    edge.size = minEdgeSize + (edgeWeight - minEdgeWeight) * (maxEdgeSize - minEdgeSize) / (maxEdgeWeight - minEdgeWeight);
-                });
-    
-                // Initialize the hover plugin
-                const hoverListener = sigma.plugins.hover(sigmaInstance, {
-                    nodeHoverColor: 'node',
-                    labelHoverShadow: 'default',
-                    labelHoverShadowColor: 'rgba(0, 0, 0, 0.9)',
-                    edgeHoverExtremities: false, // Disable edge labels when hovering over the edge
-                });
-    
-                // Refresh the graph to apply the updated node positions
-                sigmaInstance.refresh();
+        async function loadGraphData() {
+        const response = await fetch('graph.json');
+        const networkxData = await response.json();
+
+        const nodes = networkxData.nodes.map(node => ({ data: { id: node.id.toString(), color: node.color } }));
+        const edges = networkxData.links.map(link => ({
+            data: {
+                id: '${link.source}-${link.target}',
+                source: link.source.toString(),
+                target: link.target.toString(),
+            },
+        }));
+
+            return { nodes, edges };
+        }
+        // JSON data
+        
+
+        // Initialize Cytoscape.js with the JSON data
+        document.addEventListener('DOMContentLoaded', async function () {
+            const graphData = await loadGraphData();
+            
+            const cy = cytoscape({
+                container: document.getElementById('cy'),
+
+                elements: {
+                    nodes: graphData.nodes,
+                    edges: graphData.edges,
+                },
+
+                style: [
+                    {       
+                        selector: 'node',
+                        style: {
+                            'background-color':  'data(color)',
+                            'label': 'data(id)',
+                            
+                            
+                        },
+                    },
+                    {
+                        selector: 'edge',
+                        style: {
+                            'width': 3,
+                            'line-color': '#ccc',
+                            'target-arrow-color': '#ccc',
+                            'target-arrow-shape': 'triangle',
+                        },
+                    },
+                ],
+
+                layout: {
+                    name: 'cose',
+                    idealEdgeLength: 100,
+                    nodeOverlap: 20,
+                    refresh: 20,
+                    fit: true,
+                    padding: 30,
+                    randomize: false,
+                    componentSpacing: 100,
+                    nodeRepulsion: 400000,
+                    edgeElasticity: 100,
+                    nestingFactor: 5,
+                    gravity: 80,
+                    numIter: 1000,
+                    initialTemp: 200,
+                    coolingFactor: 0.95,
+                    minTemp: 1.0,
+                },
+                zoomingEnabled: true, // Set to true to enable zoom control
+                userZoomingEnabled: true, // Set to false to disable user zooming
+                minZoom: 0.5, // Minimum zoom level
             });
-    </script>
+
+            const layout = cy.layout({name: 'cose' });
+            layout.run();
+            layout.on('layoutstop', function () {
+            cy.fit(undefined, 10); // You can adjust the padding value (10 in this example) as needed
+            });
+        })
+        
+      </script>
+      
       
       
       
