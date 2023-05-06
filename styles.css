@@ -11,6 +11,15 @@ p {
     line-height: 1.8;
 }
 
+.p1 {
+    font-family: Roboto;
+    margin: 10px 50px;
+
+    
+
+    font-size: large;
+}
+
 .p-subcenter {
     position: absolute;
     top: 62%;
@@ -182,6 +191,7 @@ a:hover {
 
 .slidecontainer {
     margin-top: 10px;
+    
 }
 
 .small-slider {
@@ -206,8 +216,14 @@ a:hover {
     padding: 0 3px;
     margin-bottom: 15px;
     align-items: flex-end; /* Align the text to the bottom */
+    
 }
 
+.range-number-country li {
+    font-size: 10px; /* Adjust the font size */
+    transform: rotate(-45deg); /* Rotate the text */
+    white-space: nowrap; /* Prevent text wrapping */
+}
 .img-slider {
     max-width: 50%;
     border-radius: 5px;
