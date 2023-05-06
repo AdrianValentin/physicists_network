@@ -28,5 +28,75 @@
         <div class="center">NETWORK ANALYSIS</div>
     </div>
 
+    <h1> Development of network and word cloud</h1>
+
+    <div class="imagechange">
+        <img class="img-slider img-slider-opaque small-image" src="image/fysikerfest2.jpg" id="imgchange" onerror="this.src='images/graph_placeholder.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="image/wordcloud2.jpg" id="wordcloudImg" onerror="this.src='images/placeholder.jpg';">
+
+
+    </div>
+
+
+    <div class="slidecontainer small-slider">
+        <input type="range" min="0" max="21" value="0" class="slider-range" id="myRange">
+
+        <ul class="range-number">
+            <li>BC</li>
+            <li>0</li>
+            <li>100</li>
+            <li>200</li>
+            <li>300</li>
+            <li>400</li>
+            <li>500</li>
+            <li>600</li>
+            <li>700</li>
+            <li>800</li>
+            <li>900</li>
+            <li>1000</li>
+            <li>1100</li>
+            <li>1200</li>
+            <li>1300</li>
+            <li>1400</li>
+            <li>1500</li>
+            <li>1600</li>
+            <li>1700</li>
+            <li>1800</li>
+            <li>1900</li>
+            <li>2000</li>
+        </ul>
+        
+        <p>An interactive physicist network graph through time and space </p>
+    </div>
+
+    <script>
+        let rangevalue = document.getElementById("myRange");
+        let setvalue = document.getElementById("rangevalue");
+        let imgchangevalue = document.getElementById("imgchange");
+        let wordcloudImg = document.getElementById("wordcloudImg");
+    
+        rangevalue.oninput = function() {
+            let getvalue = parseInt(rangevalue.value);
+            setvalue.innerHTML = getvalue === 0 ? "BC" : (getvalue - 1) * 100;
+    
+            let imgIndex = getvalue === 0 ? "BC" : (getvalue - 1) * 100;
+    
+            let networkImagePath = `images/fysikerfest${imgIndex}.jpg`;
+            let wordcloudImagePath = `images/wordcloud${imgIndex}.jpg`;
+    
+            imgchangevalue.setAttribute("src", networkImagePath);
+            imgchangevalue.onerror = function() {
+                this.src = 'images/graph_placeholder.jpg';
+            };
+    
+            wordcloudImg.setAttribute("src", wordcloudImagePath);
+            wordcloudImg.onerror = function() {
+                this.src = 'images/placeholder.jpg';
+            };
+        }
+    </script>
+    
+    
+    
 </body>
 </html>

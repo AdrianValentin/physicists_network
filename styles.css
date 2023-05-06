@@ -166,10 +166,65 @@ a:hover {
     opacity: 1;
 }
 
-
+/* interactive graph */
 #cy {
     display: block;
     width: 70%; /* Set the width of the graph container */
     height: 500px; /* Set the height of the graph container */
     margin-right: auto; /* Set the right margin to auto */
-  }
+}
+/* for the slider */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+
+.slidecontainer {
+    margin-top: 10px;
+}
+
+.small-slider {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.slider-range {
+    width: 100%;
+}
+
+.range-number li {
+    font-size: 10px; /* Adjust the font size */
+    transform: rotate(-45deg); /* Rotate the text */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.range-number {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3px;
+    margin-bottom: 15px;
+    align-items: flex-end; /* Align the text to the bottom */
+}
+
+.img-slider {
+    max-width: 50%;
+    border-radius: 5px;
+}
+h3 {
+    color: black;
+}
+.imagechange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.small-image {
+    width: 50%; /* Adjust the width of the image */
+    margin-right: 10px; /* Add some space between the images */
+}
+.img-slider-opaque {
+    opacity: 1; /* You can adjust this value to your desired level of transparency, with 1 being fully opaque */
+    /* Add any other style rules you want for these images */
+}
