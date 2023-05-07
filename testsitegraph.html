@@ -1,23 +1,106 @@
-<!DOCTYPE>
-<!-- This code is for demonstration purposes only.  You should not hotlink to Github, Rawgit, or files from the Cytoscape.js documentation in your production apps. -->
-<html>
-  <head>
-    <title>cose demo</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-    <link href="style.css" rel="stylesheet" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physicist Network Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+		<nav>
+			<ul>
+				<li><a href="index.html" >Home</a></li>
+				<li><a href="data.html">Data</a></li>
+				<li><a href="network.html" class="active">Network analysis</a></li>
+				<li><a href="sentimentandtext.html">Sentiment and text analysis</a></li>
+				<li><a href="https://github.com/BjarkeErichsen/SocialEngineering">Notebook</a></li>
+                <li><a href="https://github.com/BjarkeErichsen/SocialEngineering">Github</a></li>
+			</ul>
+		</nav>
+	</header>
 
-    <!-- For loading external data files -->
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
+    <div class="container">
+        <img src="fysikerfest2.jpg" alt="Snow" >
+        <div class="center">NETWORK ANALYSIS</div>
+    </div>
 
-    <script src="../../js/cytoscape.min.js"></script>
+    <h1> Acummulating graphs of physics through time</h1>
+    <h1> Specific time period graphs of physics</h1>
 
-    <!-- for testing with local version of cytoscape.js -->
-    <!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
-  </head>
-  <body>
-    <h1>cose demo</h1>
-    <div id="cy"></div>
-    <!-- Load application code at the end to ensure DOM is loaded -->
-    <script src="code.js"></script>
-  </body>
+
+
+    <h1> Physicist network based on countries</h1>
+    <div class="imagechange-country">
+        <img class="img-slider img-slider-opaque small-image" src="image/decades/fysikerfest100.jpg" id="countryImg" onerror="this.src='images/decades/graph_placeholder.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/wordcloud100.jpg" id="countryWordcloudImg" onerror="this.src='images/decades/placeholder.jpg';">
+    </div>
+    <div class="slidecontainer small-slider">
+        <input type="range" min="0" max="20" value="0" class="slider-range" id="countryRange">
+        
+        <ul class="range-number-country">
+            <li>United States</li>
+            <li>United Kingdom</li>
+            <li>Germany</li>
+            <li>France</li>
+            <li>Japan</li>
+            <li>Russia (USSR)</li>
+            <li>Canada</li>
+            <li>Italy</li>
+            <li>Switzerland</li>
+            <li>Sweden</li>
+            <li>Australia</li>
+            <li>Netherlands</li>
+            <li>China</li>
+            <li>South Korea</li>
+            <li>Israel</li>
+            <li>Denmark</li>
+        </ul>
+
+        <p class="p1">Century : <span id="countryName"></span></p>
+    </div>
+
+
+
+
+
+    <script>
+        
+
+        let countryRange = document.getElementById("countryRange");
+        let countryImg = document.getElementById("countryImg");
+        let countryWordcloudImg = document.getElementById("countryWordcloudImg");
+        let rangeNumberCountry = document.querySelector(".range-number-country");
+        let countryName = document.getElementById("countryName");
+
+
+        const countries = [
+        'United States (U.S.A)', 'United Kingdom (U.K.)', 'Germany', 'France', 'Japan', 'Russia (USSR)', 'Canada', 'Italy', 'Switzerland', 'Sweden', 'Australia', 'Netherlands', 'China', 
+        'South Korea', 'Israel', 'Denmark'
+        ]; // Replace with the actual country names
+        countryRange.max = countries.length - 1;
+
+        countryRange.oninput = function () {
+            let getvalue = parseInt(countryRange.value);
+            countryName.innerHTML = countries[getvalue];
+
+            countryImg.setAttribute("src", `images/countries/country${getvalue}.jpg`);
+            countryImg.onerror = function () {
+                this.src = 'images/countries/graph_placeholder.jpg';
+            };
+
+            countryWordcloudImg.setAttribute("src", `images/countries/countrywordcloud${getvalue}.jpg`);
+            countryWordcloudImg.onerror = function () {
+                this.src = 'images/countries/placeholder.jpg';
+            };
+        };
+
+    </script>
+    
+    
+    
+</body>
 </html>

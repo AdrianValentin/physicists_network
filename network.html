@@ -28,13 +28,12 @@
         <div class="center">NETWORK ANALYSIS</div>
     </div>
 
-    <h1> Development of network and word cloud</h1>
+    <h1> Acummulating graphs of physics through time</h1>
+    <h1> Specific time period graphs of physics</h1>
 
     <div class="imagechange">
         <img class="img-slider img-slider-opaque small-image" src="image/decades/fysikerfest0.jpg" id="imgchange" onerror="this.src='images/decades/graph_placeholder.jpg';">
         <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/wordcloud0.jpg" id="wordcloudImg" onerror="this.src='images/decades/placeholder.jpg';">
-
-
     </div>
 
 
@@ -74,14 +73,15 @@
     <div class="imagechange">
         <img class="img-slider img-slider-opaque small-image" src="image/decades/fysikerfest100.jpg" id="countryImg" onerror="this.src='images/decades/graph_placeholder.jpg';">
         <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/wordcloud100.jpg" id="countryWordcloudImg" onerror="this.src='images/decades/placeholder.jpg';">
+
     </div>
     <div class="slidecontainer small-slider">
-        <input type="range" min="0" max="39" value="0" class="slider-range" id="countryRange">
-        <p id="countryName"></p>
+        <input type="range" min="0" max="46" value="0" class="slider-range" id="countryRange">
+
         <ul class="range-number-country">
-            <li>United States (U.S.A)</li>
-            <li>United Kingdom (U.K.)</li>
-            <li>Germany</li>
+            <li>United States</li>
+            <li>United Kingdom</li>
+            <li>Germany</li> 
             <li>France</li>
             <li>Japan</li>
             <li>Russia (USSR)</li>
@@ -127,7 +127,7 @@
             <li>Peru</li>
         </ul>
 
-        <p class="p1">Country : <span id="rangevalue"></span></p>
+        <p class="p1">Country : <span id="countryName"></span></p>
     </div>
 
 
@@ -151,7 +151,7 @@
 
             imgchangevalue.setAttribute("src", networkImagePath);
             imgchangevalue.onerror = function () {
-                this.src = 'images/decadesgraph_placeholder.jpg';
+                this.src = 'images/decades/graph_placeholder.jpg';
             };
 
             wordcloudImg.setAttribute("src", wordcloudImagePath);
@@ -164,63 +164,23 @@
         let countryImg = document.getElementById("countryImg");
         let countryWordcloudImg = document.getElementById("countryWordcloudImg");
         let rangeNumberCountry = document.querySelector(".range-number-country");
+        let countryName = document.getElementById("countryName");
 
 
         const countries = [
-            "United States (U.S.A)",
-            "United Kingdom (U.K.)",
-            "Germany",
-            "France",
-            "Japan",
-            "Russia (USSR)",
-            "Canada",
-            "Italy",
-            "Switzerland",
-            "Sweden",
-            "Australia",
-            "Netherlands",
-            "China",
-            "South Korea",
-            "Israel",
-            "Denmark",
-            "Spain",
-            "Belgium",
-            "Austria",
-            "Norway",
-            "Finland",
-            "India",
-            "Brazil",
-            "Mexico",
-            "Poland",
-            "Turkey",
-            "Czech Republic",
-            "Greece",
-            "Hungary",
-            "Ireland",
-            "Taiwan",
-            "Argentina",
-            "Serbia",
-            "Singapore",
-            "Croatia",
-            "Slovenia",
-            "Ukraine",
-            "New Zealand",
-            "Bulgaria",
-            "Egypt",
-            "Iran",
-            "Kazakhstan",
-            "South Africa",
-            "Bangladesh",
-            "Pakistan",
-            "Peru",
-        ]; // Replace with the actual country names
+        'United States', 'United Kingdom', 'Germany', 'France', 'Japan', 'Russia (USSR)', 'Canada', 'Italy', 'Switzerland', 'Sweden', 'Australia', 'Netherlands', 'China', 
+        'South Korea', 'Israel', 'Denmark', 'Spain', 'Belgium', 'Austria', 'Norway', 'Finland', 'India', 'Brazil', 'Mexico', 'Poland', 'Turkey', 'Czech Republic', 'Greece', 'Hungary', 
+        'Ireland', 'Taiwan', 'Argentina', 'Serbia', 'Singapore', 'Croatia', 'Slovenia', 'Ukraine', 'New Zealand', 'Bulgaria', 'Egypt', 'Iran', 'Kazakhstan', 'South Africa', 'Bangladesh', 
+        'Pakistan', 'Peru'
+        ]; 
         countryRange.max = countries.length - 1;
 
         countryRange.oninput = function () {
             let getvalue = parseInt(countryRange.value);
             countryName.innerHTML = countries[getvalue];
 
-            countryImg.setAttribute("src", `images/countries/country${getvalue}.jpg`);
+            countryImg.setAttribute("src", `imagesc/countries/country${getvalue}.jpg`);
+            console.log("imagesc/ountries/country${getvalue}.jpg");
             countryImg.onerror = function () {
                 this.src = 'images/countries/graph_placeholder.jpg';
             };

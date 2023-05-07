@@ -192,19 +192,25 @@ a:hover {
      
 } 
 */
+.graphcontainer{
+    overflow: visible;
 
+
+}
 #cy {
-    width: 100%;
+    width: 80%;
     height: 100%;
     position: relative;
+    max-width: 800px;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 0;
+    overflow: visible;
 }
 #cy canvas {
     width: 100% !important;
     height: 100% !important;
-    position: absolute !important;
+    overflow: visible !important;
 
 }
 
@@ -228,7 +234,9 @@ a:hover {
 .slider-range {
     width: 100%;
 }
-
+.slider-range-country {
+    width: 100%;
+}
 .range-number li {
     font-size: 10px; /* Adjust the font size */
     transform: rotate(-45deg); /* Rotate the text */
@@ -247,8 +255,9 @@ a:hover {
 
 .range-number-country li {
     font-size: 10px; /* Adjust the font size */
-    transform: rotate(-45deg); /* Rotate the text */
+    transform: rotate(-30deg); /* Rotate the text */
     white-space: nowrap; /* Prevent text wrapping */
+    
 }
 .img-slider {
     max-width: 50%;
@@ -262,6 +271,11 @@ h3 {
     justify-content: center;
     align-items: center;
 }
+.imagechange-country {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .small-image {
     width: 50%; /* Adjust the width of the image */
     margin-right: 10px; /* Add some space between the images */
@@ -270,9 +284,26 @@ h3 {
     opacity: 1; /* You can adjust this value to your desired level of transparency, with 1 being fully opaque */
     /* Add any other style rules you want for these images */
 }
+ /* 
 * {
-    background-color: rgba(255, 0, 0, 0.1); /* Add this line */
+    background-color: rgba(255, 0, 0, 0.1); 
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}*/
+
+.range-number-country {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 7px;
+    list-style-type: none;
+}
+
+.range-number-country li {
+    display: inline;
+    text-align: center;
+    font-size: 6px; /* Smaller font size */
+    white-space: nowrap;
+    margin-right: -10px; /* Reduce whitespace between elements */
 }
