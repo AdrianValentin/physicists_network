@@ -29,6 +29,41 @@
     </div>
 
     <h1> Acummulating graphs of physics through time</h1>
+    <div class="imagechange">
+        <img class="img-slider img-slider-opaque small-image" src="image/decades/fysikerfest0.jpg" id="cumimgchange" onerror="this.src='images/decades/graph_placeholder.jpg';">
+    </div>
+    <div class="slidecontainer small-slider">
+        <input type="range" min="0" max="21" value="0" class="slider-range" id="cummyRange">
+
+        <ul class="range-number">
+            <li>BC</li>
+            <li>0</li>
+            <li>100</li>
+            <li>200</li>
+            <li>300</li>
+            <li>400</li>
+            <li>500</li>
+            <li>600</li>
+            <li>700</li>
+            <li>800</li>
+            <li>900</li>
+            <li>1000</li>
+            <li>1100</li>
+            <li>1200</li>
+            <li>1300</li>
+            <li>1400</li>
+            <li>1500</li>
+            <li>1600</li>
+            <li>1700</li>
+            <li>1800</li>
+            <li>1900</li>
+            <li>2000</li>
+        </ul>
+        
+        <p class="p1">Cumultative physicist network graph through time and space</span></p>
+        <p class="p1">Century : <span id="rangevalue"></span></p>
+    </div>
+
     <h1> Specific time period graphs of physics</h1>
 
     <div class="imagechange">
@@ -66,7 +101,7 @@
         </ul>
         
         <p class="p1">An interactive physicist network graph through time and space</span></p>
-        <p class="p1">Century : <span id="rangevalue"></span></p>
+        <p class="p1">Timeperiod : <span id="cumrangevalue"></span></p>
     </div>
 
     <h1> Physicist network based on countries</h1>
@@ -135,6 +170,29 @@
 
 
     <script>
+        // Move the cummyRange related code block to the end of the script
+        let cumrangevalue = document.getElementById("cummyRange");
+        let cumsetvalue = document.getElementById("cumrangevalue");
+        let cumimgchangevalue = document.getElementById("cumimgchange");
+        
+        cumrangevalue.oninput = function () {
+            let getvalue = parseInt(cumrangevalue.value);
+            cumsetvalue.innerHTML = getvalue === 0 ? "BC" : (getvalue - 1) * 100;
+    
+            let imgIndex = getvalue === 0 ? "BC" : (getvalue - 1) * 100;
+    
+            let networkImagePath = `images/cumsumgraph/graph${imgIndex}.jpg`;
+    
+            cumimgchangevalue.setAttribute("src", networkImagePath);
+            cumimgchangevalue.onerror = function () {
+                this.src = 'images/cumsumgraph/graph_placeholder.jpg';
+            };
+        };
+
+
+
+
+
         let rangevalue = document.getElementById("myRange");
         let setvalue = document.getElementById("rangevalue");
         let imgchangevalue = document.getElementById("imgchange");
