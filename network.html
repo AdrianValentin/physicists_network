@@ -24,7 +24,7 @@
                         <a href="country_networksgraph.html">Country Networks</a>
                     </div>
                 </li>
-				<li><a href="sentimentandtext.html">Sentiment and text analysis</a></li>
+
 				<li><a href="https://github.com/BjarkeErichsen/SocialEngineering/blob/main/Project/FinalProjectMain.ipynb">Notebook</a></li>
                 <li><a href="https://github.com/BjarkeErichsen/SocialEngineering">Github</a></li>
 			</ul>
@@ -35,8 +35,16 @@
         <img src="fysikerfest2.jpg" alt="Snow" >
         <div class="center">NETWORK ANALYSIS</div>
     </div>
+    <p> On this website, we've created three interactive sliders, each providing insights into the physicist community and its development over time.
 
-    <h1> Acummulating graphs of physicist through time</h1>
+        The first slider displays the connections between physicists from B.C. until the year 2000, ultimately revealing the complete network graph of all connections sourced from Wikipedia.
+        The second slider features three distinct plots. The first plot illustrates the network connections during a specific time period. 
+        The second plot presents a word cloud generated through TF-IDF analysis from the Wikipedia pages of the physicists in the graph. 
+        Lastly, the third plot showcases a word cloud with the most descriptive terms from the physicists' Wikipedia pages, as summarized by ChatGPT. 
+    
+        Finally, the third slider is similar to the second slider, but instead of focusing on time periods, it examines communities based on the countries of origin for the physicists.
+    </p>
+    <h1> Acummulated graph of physicist through time</h1>
     <div class="imagechange">
         <img class="img-slider img-slider-opaque small-image" src="images\cumsumgraph\networkBC.jpg" id="cumimgchange" onerror="this.src='images/decades/networkBC.jpg';">
     </div>
@@ -67,12 +75,12 @@
         <p class="p1"> <span id="rangevalue"></span></p>
     </div>
 
-    <h1> Specific time period graphs of physicist</h1>
+    <h1> Physicist Graphs for Specific Time Periods</h1>
 
     <div class="imagechange">
         <img class="img-slider img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="imgchange" onerror="this.src='images/decades/networkBC.jpg';"> 
-        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="wordcloudImg" onerror="this.src='images/decades/networkBC.jpg';">
-        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="timeGPTWordcloudImg" onerror="this.src='images/decades/networkBC.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="images/decades/tf_idf_BC.jpg" id="wordcloudImg" onerror="this.src='images/decades/tf_idf_BC.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="images/underconstruction.jpg" id="timeGPTWordcloudImg" onerror="this.src='images/underconstruction.jpg';">
     </div>
 
 
@@ -105,8 +113,8 @@
     <h1> Physicist network based on countries</h1>
     <div class="imagechange">
         <img class="img-slider img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="countryImg" onerror="this.src='images/decades/networkBC.jpg';">
-        <img class="img-wordcloud img-slider-opaque small-image" src="images\countries\tf_idf_BC.jpg" id="countryWordcloudImg" onerror="this.src='images\countries\tf_idf_BC.jpg';">
-        <img class="img-wordcloud img-slider-opaque small-image" src="images/countries/gpt_1.jpg" id="countryGPTWordcloudImg" onerror="this.src='images/countries/gpt_1.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="images/countries/tf_idf_BC.jpg" id="countryWordcloudImg" onerror="this.src='images/countries/tf_idf_BC.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="images/underconstruction.jpg" id="countryGPTWordcloudImg" onerror="this.src='images/underconstruction.jpg';">
 
     </div>
     <div class="slidecontainer small-slider">
@@ -186,6 +194,7 @@
         let setvalue = document.getElementById("rangevalue");
         let imgchangevalue = document.getElementById("imgchange");
         let wordcloudImg = document.getElementById("wordcloudImg");
+        let wordgptcloudImg = document.getElementById("timeGPTWordcloudImg");
 
         rangevalue.oninput = function () {
             let getvalue = parseInt(rangevalue.value);
@@ -193,7 +202,8 @@
             setvalue.innerHTML = index;
 
             let networkImagePath = `images/decades/network (${index}).jpg`;
-            let wordcloudImagePath = `images/decades/network (${index}).jpg`; //wordcloud
+            let wordcloudImagePath = `images/decades/tf_idf_${index}.jpg`; //wordcloud
+            let wordgptcloudImagePath = `images/decades/gpt_${index}.jpg`; //wordcloud
 
             imgchangevalue.setAttribute("src", networkImagePath);
             imgchangevalue.onerror = function () {
@@ -202,7 +212,12 @@
 
             wordcloudImg.setAttribute("src", wordcloudImagePath);
             wordcloudImg.onerror = function () {
-                this.src = 'images/decades/networkBC.jpg';//wordcloud
+                this.src = 'images/decades/tf_idf_BC.jpg';//wordcloud
+            };
+
+            wordgptcloudImg.setAttribute("src", wordgptcloudImagePath);
+            wordgptcloudImg.onerror = function () {
+                this.src = 'images/underconstruction.jpg';//wordcloud
             };
         };
 
@@ -235,7 +250,7 @@
 
             countrygptWordcloudImg.setAttribute("src", `images/countries/gpt_${getvalue}.jpg`);
             countrygptWordcloudImg.onerror = function () {
-                this.src = 'images/countries/gpt_1.jpg'; //placeholder??
+                this.src = 'images/underconstruction.jpg'; //placeholder??
             };
         };
 
