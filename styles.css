@@ -307,3 +307,18 @@ h3 {
     white-space: nowrap;
     margin-right: -10px; /* Reduce whitespace between elements */
 }
+
+.frontpageimages {
+    width: 30%;
+    height: auto;
+
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    opacity: 1;
+    
+}
+
+.frontpageimages:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
