@@ -38,73 +38,62 @@
 
     <h1> Acummulating graphs of physics through time</h1>
     <div class="imagechange">
-        <img class="img-slider img-slider-opaque small-image" src="image/decades/fysikerfest0.jpg" id="cumimgchange" onerror="this.src='images/decades/graph_placeholder.jpg';">
+        <img class="img-slider img-slider-opaque small-image" src="images\cumsumgraph\networkBC.jpg" id="cumimgchange" onerror="this.src='images/decades/networkBC.jpg';">
     </div>
     <div class="slidecontainer small-slider">
-        <input type="range" min="0" max="21" value="0" class="slider-range" id="cummyRange">
+        <input type="range" min="0" max="13" value="0" class="slider-range" id="cummyRange">
 
         <ul class="range-number">
             <li>BC</li>
-            <li>0</li>
             <li>100</li>
-            <li>200</li>
-            <li>300</li>
-            <li>400</li>
-            <li>500</li>
-            <li>600</li>
-            <li>700</li>
-            <li>800</li>
-            <li>900</li>
             <li>1000</li>
-            <li>1100</li>
-            <li>1200</li>
-            <li>1300</li>
-            <li>1400</li>
             <li>1500</li>
             <li>1600</li>
             <li>1700</li>
+            <li>1750</li>
             <li>1800</li>
+            <li>1850</li>
             <li>1900</li>
+            <li>1920</li>
+            <li>1940</li>
+            <li>1940</li>
+            <li>1960</li>
+            <li>1980</li>
             <li>2000</li>
         </ul>
         
         <p class="p1">Cumultative physicist network graph through time and space</span></p>
-        <p class="p1">Century : <span id="rangevalue"></span></p>
+        <p class="p1">Black nodes is new nodes in that period, where white nodes is physicist from previous periods</span></p>
+        <p class="p1"> <span id="rangevalue"></span></p>
     </div>
 
     <h1> Specific time period graphs of physics</h1>
 
     <div class="imagechange">
-        <img class="img-slider img-slider-opaque small-image" src="image/decades/fysikerfest0.jpg" id="imgchange" onerror="this.src='images/decades/graph_placeholder.jpg';">
-        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/wordcloud0.jpg" id="wordcloudImg" onerror="this.src='images/decades/placeholder.jpg';">
+        <img class="img-slider img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="imgchange" onerror="this.src='images/decades/networkBC.jpg';"> 
+        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="wordcloudImg" onerror="this.src='images/decades/networkBC.jpg';">
     </div>
 
 
     <div class="slidecontainer small-slider">
-        <input type="range" min="0" max="21" value="0" class="slider-range" id="myRange">
+        <input type="range" min="0" max="13" value="0" class="slider-range" id="myRange">
 
         <ul class="range-number">
             <li>BC</li>
-            <li>0</li>
             <li>100</li>
-            <li>200</li>
-            <li>300</li>
-            <li>400</li>
-            <li>500</li>
-            <li>600</li>
-            <li>700</li>
-            <li>800</li>
-            <li>900</li>
             <li>1000</li>
-            <li>1100</li>
-            <li>1200</li>
-            <li>1300</li>
-            <li>1400</li>
             <li>1500</li>
             <li>1600</li>
             <li>1700</li>
+            <li>1750</li>
             <li>1800</li>
+            <li>1850</li>
             <li>1900</li>
+            <li>1920</li>
+            <li>1940</li>
+            <li>1940</li>
+            <li>1960</li>
+            <li>1980</li>
             <li>2000</li>
         </ul>
         
@@ -114,8 +103,8 @@
 
     <h1> Physicist network based on countries</h1>
     <div class="imagechange">
-        <img class="img-slider img-slider-opaque small-image" src="image/decades/fysikerfest100.jpg" id="countryImg" onerror="this.src='images/decades/graph_placeholder.jpg';">
-        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/wordcloud100.jpg" id="countryWordcloudImg" onerror="this.src='images/decades/placeholder.jpg';">
+        <img class="img-slider img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="countryImg" onerror="this.src='images/decades/networkBC.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="countryWordcloudImg" onerror="this.src='images/decades/networkBC.jpg';">
 
     </div>
     <div class="slidecontainer small-slider">
@@ -178,28 +167,44 @@
 
 
     <script>
-        // Move the cummyRange related code block to the end of the script
         let cumrangevalue = document.getElementById("cummyRange");
         let cumsetvalue = document.getElementById("cumrangevalue");
         let cumimgchangevalue = document.getElementById("cumimgchange");
-        
+
+        function getIndexFromValue(value) {
+            if (value === 0) {
+                return "BC";
+            } else {
+
+                return value;
+            }
+        }
+
         cumrangevalue.oninput = function () {
             let getvalue = parseInt(cumrangevalue.value);
-            cumsetvalue.innerHTML = getvalue === 0 ? "BC" : (getvalue - 1) * 100;
-    
-            let imgIndex = getvalue === 0 ? "BC" : (getvalue - 1) * 100;
-    
-            let networkImagePath = `images/cumsumgraph/graph${imgIndex}.jpg`;
-    
+            let index = getIndexFromValue(getvalue);
+            cumsetvalue.innerHTML = index;
+
+            let networkImagePath = `images/cumsumgraph/network (${index}).jpg`;
+
             cumimgchangevalue.setAttribute("src", networkImagePath);
             cumimgchangevalue.onerror = function () {
-                this.src = 'images/cumsumgraph/graph_placeholder.jpg';
+                this.src = 'images/cumsumgraph/networkBC.jpg';
             };
         };
 
 
 
 
+
+        function getIndexFromValue(value) {
+            if (value === 0) {
+                return "BC";
+            } else {
+
+                return value;
+            }
+        }
 
         let rangevalue = document.getElementById("myRange");
         let setvalue = document.getElementById("rangevalue");
@@ -208,21 +213,20 @@
 
         rangevalue.oninput = function () {
             let getvalue = parseInt(rangevalue.value);
-            setvalue.innerHTML = getvalue === 0 ? "BC" : (getvalue - 1) * 100;
+            let index = getIndexFromValue(getvalue);
+            setvalue.innerHTML = index;
 
-            let imgIndex = getvalue === 0 ? "BC" : (getvalue - 1) * 100;
-
-            let networkImagePath = `images/decades/fysikerfest${imgIndex}.jpg`;
-            let wordcloudImagePath = `images/decades/wordcloud${imgIndex}.jpg`;
+            let networkImagePath = `images/decades/network (${index}).jpg`;
+            let wordcloudImagePath = `images/decades/network (${index}).jpg`; //wordcloud
 
             imgchangevalue.setAttribute("src", networkImagePath);
             imgchangevalue.onerror = function () {
-                this.src = 'images/decades/graph_placeholder.jpg';
+                this.src = 'images/decades/networkBC.jpg';
             };
 
             wordcloudImg.setAttribute("src", wordcloudImagePath);
             wordcloudImg.onerror = function () {
-                this.src = 'images/decades/placeholder.jpg';
+                this.src = 'images/decades/networkBC.jpg';//wordcloud
             };
         };
 
@@ -245,15 +249,15 @@
             let getvalue = parseInt(countryRange.value);
             countryName.innerHTML = countries[getvalue];
 
-            countryImg.setAttribute("src", `imagesc/countries/country${getvalue}.jpg`);
-            console.log("imagesc/ountries/country${getvalue}.jpg");
+            countryImg.setAttribute("src", `imagesc/countries/network (${getvalue}).jpg`);
+            console.log("imagesc/countries/country${getvalue}.jpg");
             countryImg.onerror = function () {
-                this.src = 'images/countries/graph_placeholder.jpg';
+                this.src = 'images/countries/networkBC.jpg.jpg';
             };
 
             countryWordcloudImg.setAttribute("src", `images/countries/countrywordcloud${getvalue}.jpg`);
             countryWordcloudImg.onerror = function () {
-                this.src = 'images/countries/placeholder.jpg';
+                this.src = 'images/countries/networkBC.jpg';
             };
         };
 
