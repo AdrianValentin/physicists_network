@@ -102,15 +102,15 @@
         const networkxData = await response.json();
 
         const nodes = networkxData.nodes.map(node => ({ data: { id: node.id.toString(), color: node.color } }));
-        const edges = networkxData.links.map(link => ({
-            data: {
-                id: '${link.source}-${link.target}',
-                source: link.source.toString(),
-                target: link.target.toString(),
-            },
+        const edges = networkxData.links.map((link, index) => ({
+        data: {
+        id: `edge-${index}`,
+        source: link.source.toString(),
+        target: link.target.toString(),
+        },
         }));
 
-            return { nodes, edges };
+        return { nodes, edges };
         }
         // JSON data
         
