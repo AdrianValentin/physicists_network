@@ -280,6 +280,13 @@ h3 {
     width: 50%; /* Adjust the width of the image */
     margin-right: 10px; /* Add some space between the images */
 }
+.small-image {
+    max-width: 30%;
+    height: auto;
+    margin: 0.5rem;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
 .img-slider-opaque {
     opacity: 1; /* You can adjust this value to your desired level of transparency, with 1 being fully opaque */
     /* Add any other style rules you want for these images */

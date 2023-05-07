@@ -36,7 +36,7 @@
         <div class="center">NETWORK ANALYSIS</div>
     </div>
 
-    <h1> Acummulating graphs of physics through time</h1>
+    <h1> Acummulating graphs of physicist through time</h1>
     <div class="imagechange">
         <img class="img-slider img-slider-opaque small-image" src="images\cumsumgraph\networkBC.jpg" id="cumimgchange" onerror="this.src='images/decades/networkBC.jpg';">
     </div>
@@ -67,11 +67,12 @@
         <p class="p1"> <span id="rangevalue"></span></p>
     </div>
 
-    <h1> Specific time period graphs of physics</h1>
+    <h1> Specific time period graphs of physicist</h1>
 
     <div class="imagechange">
         <img class="img-slider img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="imgchange" onerror="this.src='images/decades/networkBC.jpg';"> 
         <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="wordcloudImg" onerror="this.src='images/decades/networkBC.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="timeGPTWordcloudImg" onerror="this.src='images/decades/networkBC.jpg';">
     </div>
 
 
@@ -98,66 +99,41 @@
         </ul>
         
         <p class="p1">An interactive physicist network graph through time and space</span></p>
-        <p class="p1">Timeperiod : <span id="cumrangevalue"></span></p>
+        <p class="p1"> <span id="cumrangevalue"></span></p>
     </div>
 
     <h1> Physicist network based on countries</h1>
     <div class="imagechange">
         <img class="img-slider img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="countryImg" onerror="this.src='images/decades/networkBC.jpg';">
-        <img class="img-wordcloud img-slider-opaque small-image" src="image/decades/networkBC.jpg" id="countryWordcloudImg" onerror="this.src='images/decades/networkBC.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="images\countries\tf_idf_BC.jpg" id="countryWordcloudImg" onerror="this.src='images\countries\tf_idf_BC.jpg';">
+        <img class="img-wordcloud img-slider-opaque small-image" src="images/countries/gpt_1.jpg" id="countryGPTWordcloudImg" onerror="this.src='images/countries/gpt_1.jpg';">
 
     </div>
     <div class="slidecontainer small-slider">
-        <input type="range" min="0" max="46" value="0" class="slider-range" id="countryRange">
+        <input type="range" min="0" max="19" value="0" class="slider-range" id="countryRange">
 
         <ul class="range-number-country">
-            <li>United States</li>
-            <li>United Kingdom</li>
-            <li>Germany</li> 
+            <li>United States (U.S.A)</li>
+            <li>Germany</li>
+            <li>United Kingdom (U.K.)</li>
             <li>France</li>
-            <li>Japan</li>
             <li>Russia (USSR)</li>
-            <li>Canada</li>
-            <li>Italy</li>
-            <li>Switzerland</li>
-            <li>Sweden</li>
-            <li>Australia</li>
             <li>Netherlands</li>
-            <li>China</li>
-            <li>South Korea</li>
-            <li>Israel</li>
-            <li>Denmark</li>
-            <li>Spain</li>
-            <li>Belgium</li>
             <li>Austria</li>
-            <li>Norway</li>
-            <li>Finland</li>
             <li>India</li>
-            <li>Brazil</li>
-            <li>Mexico</li>
-            <li>Poland</li>
-            <li>Turkey</li>
-            <li>Czech Republic</li>
-            <li>Greece</li>
-            <li>Hungary</li>
-            <li>Ireland</li>
-            <li>Taiwan</li>
-            <li>Argentina</li>
-            <li>Serbia</li>
-            <li>Singapore</li>
-            <li>Croatia</li>
-            <li>Slovenia</li>
+            <li>Italy</li>
+            <li>Australia</li>
+            <li>Denmark</li>
+            <li>Switzerland</li>
             <li>Ukraine</li>
-            <li>New Zealand</li>
-            <li>Bulgaria</li>
-            <li>Egypt</li>
-            <li>Iran</li>
-            <li>Kazakhstan</li>
-            <li>South Africa</li>
-            <li>Bangladesh</li>
-            <li>Pakistan</li>
-            <li>Peru</li>
+            <li>Japan</li>
+            <li>Canada</li>
+            <li>Sweden</li>
+            <li>China</li>
+            <li>Israel</li>
+            <li>Ireland</li>
         </ul>
+        
 
         <p class="p1">Country : <span id="countryName"></span></p>
     </div>
@@ -233,31 +209,33 @@
         let countryRange = document.getElementById("countryRange");
         let countryImg = document.getElementById("countryImg");
         let countryWordcloudImg = document.getElementById("countryWordcloudImg");
+        let countrygptWordcloudImg = document.getElementById("countryGPTWordcloudImg");
         let rangeNumberCountry = document.querySelector(".range-number-country");
         let countryName = document.getElementById("countryName");
 
 
-        const countries = [
-        'United States', 'United Kingdom', 'Germany', 'France', 'Japan', 'Russia (USSR)', 'Canada', 'Italy', 'Switzerland', 'Sweden', 'Australia', 'Netherlands', 'China', 
-        'South Korea', 'Israel', 'Denmark', 'Spain', 'Belgium', 'Austria', 'Norway', 'Finland', 'India', 'Brazil', 'Mexico', 'Poland', 'Turkey', 'Czech Republic', 'Greece', 'Hungary', 
-        'Ireland', 'Taiwan', 'Argentina', 'Serbia', 'Singapore', 'Croatia', 'Slovenia', 'Ukraine', 'New Zealand', 'Bulgaria', 'Egypt', 'Iran', 'Kazakhstan', 'South Africa', 'Bangladesh', 
-        'Pakistan', 'Peru'
-        ]; 
+        const countries = ['United States (U.S.A)', 'Germany', 'United Kingdom (U.K.)', 'France', 'Russia (USSR)', 'Netherlands', 'Austria', 'India', 'Italy', 'Australia', 'Denmark', 
+        'Switzerland', 'Ukraine', 'Japan', 'Canada', 'Sweden', 'China', 'Israel', 'Ireland'] 
         countryRange.max = countries.length - 1;
 
         countryRange.oninput = function () {
             let getvalue = parseInt(countryRange.value);
             countryName.innerHTML = countries[getvalue];
 
-            countryImg.setAttribute("src", `imagesc/countries/network (${getvalue}).jpg`);
-            console.log("imagesc/countries/country${getvalue}.jpg");
+            countryImg.setAttribute("src", `images/countries/network (${getvalue}).jpg`);
+            console.log("images/countries/country${getvalue}.jpg");
             countryImg.onerror = function () {
-                this.src = 'images/countries/networkBC.jpg.jpg';
+                this.src = 'images/countries/networkBC.jpg';
             };
 
-            countryWordcloudImg.setAttribute("src", `images/countries/countrywordcloud${getvalue}.jpg`);
+            countryWordcloudImg.setAttribute("src", `images/countries/tf_idf_${getvalue}.jpg`);
             countryWordcloudImg.onerror = function () {
-                this.src = 'images/countries/networkBC.jpg';
+                this.src = 'images/countries/tf_idf_BC.jpg';
+            };
+
+            countrygptWordcloudImg.setAttribute("src", `images/countries/gpt_${getvalue}.jpg`);
+            countrygptWordcloudImg.onerror = function () {
+                this.src = 'images/countries/gpt_1.jpg'; //placeholder??
             };
         };
 
