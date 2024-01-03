@@ -5,3 +5,4 @@ print(len(co))
 
 
 print("bjarke er sejere end adrian")
+print("bjarke er sejere end august")
